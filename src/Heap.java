@@ -48,36 +48,41 @@ public class Heap {
 	}
 
 	public void create(int list[], int size) {
-
+		// 建立堆積樹
 		for (int i = (size / 2); i > 0; i--) {
 			Heap.tree(list, i, size);
 		}
+		// 原始堆積樹
 		System.out.print("heap tree :{ ");
 		Heap.print();
 		System.out.println("}");
 		// change
 		for (int i = size - 2; i > 0; i--) {
+			// 頭尾交換
 			int tmp = list[i + 1];
 			list[i + 1] = list[1];
 			list[1] = tmp;
+			// 重新排序剩下的節點
 			Heap.tree(list, 1, i);
-//			System.out.print("\n過程");
-//			for(int j=1;j<size;j++) {
-//				System.out.print("["+list[j]+"]");
-//			}
+			// System.out.print("\n過程");
+			// for(int j=1;j<size;j++) {
+			// System.out.print("["+list[j]+"]");
+			// }
 		}
 	}
 
 	public static void main(String[] args) {
 		Heap data = new Heap();
+//		產生資料
 		data.list();
 		System.out.print("原始陣列:{ ");
 		data.print();
 		System.out.println("}");
+//		開始排序
 		data.create(list, size);
 		System.out.print("排序結果:{ ");
-		for(int j=1;j<size;j++) {
-			System.out.print(list[j]+ " ");
+		for (int j = 1; j < size; j++) {
+			System.out.print(list[j] + " ");
 		}
 		System.out.println("}");
 
