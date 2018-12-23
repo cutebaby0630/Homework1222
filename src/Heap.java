@@ -2,8 +2,13 @@ import java.util.Random;
 
 public class Heap {
 	public static int[] list = new int[10];
-	static int size =9;
+	static int size = 9;
+
 	public Heap() {
+
+	}
+
+	public void list() {
 		Random random = new Random();
 		for (int b = 0; b < 10; b++) {
 			int a = random.nextInt((100) + 1);
@@ -27,7 +32,6 @@ public class Heap {
 				if (list[j] < list[j + 1]) {
 					j = j + 1;
 				}
-
 			}
 			if (tmp >= list[j]) {
 				// 若樹根為最大end 改flase跳出迴圈
@@ -38,7 +42,6 @@ public class Heap {
 				list[j / 2] = list[j];
 				j = 2 * j;
 			}
-
 		}
 		// 指定樹根為父節點
 		list[j / 2] = tmp;
@@ -49,27 +52,35 @@ public class Heap {
 		for (int i = (size / 2); i > 0; i--) {
 			Heap.tree(list, i, size);
 		}
-		System.out.println("heap tree :");
+		System.out.print("heap tree :{ ");
 		Heap.print();
-		
-	}
-	public static void change() {
-		for(int i = (size/2);i>0;i++) {
-			int tmp = list[i+1];
+		System.out.println("}");
+		// change
+		for (int i = size - 2; i > 0; i--) {
+			int tmp = list[i + 1];
+			list[i + 1] = list[1];
 			list[1] = tmp;
-			Heap.tree(list, i, size);
+			Heap.tree(list, 1, i);
+//			System.out.print("\n過程");
+//			for(int j=1;j<size;j++) {
+//				System.out.print("["+list[j]+"]");
+//			}
 		}
 	}
+
 	public static void main(String[] args) {
 		Heap data = new Heap();
+		data.list();
 		System.out.print("原始陣列:{ ");
 		data.print();
-		System.out.println(" }");
+		System.out.println("}");
 		data.create(list, size);
 		System.out.print("排序結果:{ ");
-		data.print();
-		System.out.println(" }");
-		
+		for(int j=1;j<size;j++) {
+			System.out.print(list[j]+ " ");
+		}
+		System.out.println("}");
+
 	}
 
 }
