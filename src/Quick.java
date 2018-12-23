@@ -2,7 +2,6 @@ import java.util.Random;
 
 public class Quick {
 	public static int[] list = new int[10];
-	static String out = "";
 	int head;
 	int end;
 
@@ -33,7 +32,7 @@ public class Quick {
 			while (num[j] > a) {
 				j = j - 1;
 			}
-			
+//			交換(比基準值大往右丟，比基準值小往左丟)
 			if (i < j) {
 				int t = num[i];
 				num[i] = num[j];
@@ -45,13 +44,13 @@ public class Quick {
 			}
 		}
 //		更改基準值
-//		處理基準值右邊
+//		處理基準值左邊
 		change(num, head, j);
-//		處理基準值的左邊
+//		處理基準值的右邊
 		change(num, i, end);
 	}
 
-	// 印出一開始的樣本數列
+
 	public void print() {
 
 		for (int b = 0; b < list.length; b++) {
@@ -62,10 +61,13 @@ public class Quick {
 
 	public static void main(String[] args) {
 		Quick q = new Quick();
-		System.out.print("排列前: { ");
+//		印出樣本數列
+		System.out.print("原始陣列: { ");
 		q.print();
 		System.out.println("}");
+//		交換
 		q.change(list, 0, 9);
+//		印出交換後的數列
 		System.out.print("排列後: { ");
 		q.print();
 		System.out.println("}");

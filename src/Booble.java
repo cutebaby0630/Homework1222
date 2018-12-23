@@ -11,7 +11,7 @@ public class Booble {
 				n[i] = (int) r.nextInt((50) + 1);
 
 			}
-			System.out.print("排列前:{ ");
+			System.out.print("原始陣列:{ ");
 			for(int num:n){
 				System.out.print(num + " ");
 			}
